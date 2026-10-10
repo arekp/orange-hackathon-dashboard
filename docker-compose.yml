@@ -1,0 +1,24 @@
+# Lokalnie: docker compose up                      (dane z GitHuba, wymaga .env)
+#           docker compose --profile demo up demo  (dane testowe na porcie 8081)
+services:
+  dashboard:
+    build: .
+    env_file: .env
+    environment:
+      DB_PATH: /data/hackathon.db
+      TEAMS_FILE: /config/teams.json
+    volumes:
+      - ./data:/data
+      - ./:/config:ro
+    ports:
+      - "${PORT:-8080}:8080"
+    restart: unless-stopped
+
+  demo:
+    profiles: ["demo"]
+    build: .
+    command: ["--demo"]
+    environment:
+      DB_PATH: /data/demo.db
+    ports:
+      - "8081:8080"

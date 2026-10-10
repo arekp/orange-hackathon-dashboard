@@ -1,0 +1,5 @@
+{
+  "team-01": "Nazwa biznesowa zespołu",
+  "team-02": { "name": "Inna nazwa", "color": "#f72585" },
+  "repo-organizatorow": { "hidden": true }
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orange Hackathon · Live</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/neon.css">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/vendor/echarts.min.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="live"><i></i>LIVE</span>
+      <a class="home" href="/" title="Strona startowa">
+        <h1 class="neon neon-sm" aria-label="Orange Hackathon">
+          <span class="word orange"><span class="l">O</span><span class="l">R</span><span class="l">A</span><span class="l">N</span><span class="l glitch-a">G</span><span class="l">E</span></span>
+          <span class="word hack"><span class="l">H</span><span class="l">A</span><span class="l">C</span><span class="l glitch-b">K</span><span class="l">A</span><span class="l">T</span><span class="l dim">H</span><span class="l">O</span><span class="l">N</span></span>
+        </h1>
+      </a>
+      <span id="demo-badge" class="demo" hidden>DEMO</span>
+    </div>
+    <div class="clock">
+      <div class="clock-label" id="clock-label">Do końca</div>
+      <div class="countdown" id="countdown">--:--:--</div>
+      <div class="progress"><div id="progress-bar"></div></div>
+    </div>
+    <div class="status">
+      <div id="updated">Ładowanie danych…</div>
+      <button id="fullscreen" title="Pełny ekran (F)">⛶</button>
+    </div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi"><span class="kpi-value" id="k-commits">0</span><span class="kpi-label">commitów</span></div>
+    <div class="kpi"><span class="kpi-value" id="k-loc">0</span><span class="kpi-label">linii kodu netto</span></div>
+    <div class="kpi"><span class="kpi-value" id="k-prs">0</span><span class="kpi-label">scalonych PR</span></div>
+    <div class="kpi"><span class="kpi-value" id="k-rate">0</span><span class="kpi-label">commitów w ostatniej godzinie</span></div>
+    <div class="kpi"><span class="kpi-value" id="k-teams">0</span><span class="kpi-label">aktywnych zespołów (1 h)</span></div>
+    <div class="kpi"><span class="kpi-value" id="k-authors">0</span><span class="kpi-label">osób kodujących teraz</span></div>
+  </section>
+
+  <main class="stage">
+    <section class="views">
+      <nav class="tabs" id="tabs">
+        <button data-view="race">1 · Wyścig</button>
+        <button data-view="loc">2 · Linie kodu</button>
+        <button data-view="total">3 · Łącznie</button>
+        <button data-view="heat">4 · Rytm hackatonu</button>
+        <button data-view="grid">5 · Zespoły</button>
+        <span class="rotate-hint" id="rotate-hint">auto</span>
+      </nav>
+      <div class="view" id="view-race">
+        <div class="view-head"><h2 id="race-title">Wyścig commitów</h2><span class="sub" id="race-time"></span></div>
+        <div class="chart" id="chart-race"></div>
+      </div>
+      <div class="view" id="view-loc" hidden>
+        <div class="view-head"><h2>Linie kodu w czasie: każdy zespół</h2><span class="sub">netto, domyślna gałąź, bez plików generowanych; najedź na linię, by ją wyróżnić</span></div>
+        <div class="chart" id="chart-loc"></div>
+      </div>
+      <div class="view" id="view-total" hidden>
+        <div class="view-head"><h2>Cały hackaton: linie kodu w czasie</h2><span class="sub">biała linia to suma wszystkich zespołów, kolorowe słupki to przyrost każdego zespołu w przedziale</span></div>
+        <div class="chart" id="chart-total"></div>
+      </div>
+      <div class="view" id="view-heat" hidden>
+        <div class="view-head"><h2>Rytm hackatonu</h2><span class="sub">commity na godzinę, każdy wiersz to zespół</span></div>
+        <div class="chart" id="chart-heat"></div>
+      </div>
+      <div class="view" id="view-grid" hidden>
+        <div class="view-head"><h2>Zespoły</h2><span class="sub">tempo z ostatnich 6 h, strzałka to zmiana względem poprzedniej godziny</span></div>
+        <div class="grid" id="team-grid"></div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="hot" id="hot">
+        <div class="hot-label">🔥 Najgorętszy zespół godziny</div>
+        <div class="hot-name" id="hot-name">—</div>
+        <div class="hot-stats" id="hot-stats"></div>
+      </div>
+      <div class="feed">
+        <h3>Na żywo</h3>
+        <ol id="feed"></ol>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="ticker"><div class="ticker-track" id="ticker"></div></footer>
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

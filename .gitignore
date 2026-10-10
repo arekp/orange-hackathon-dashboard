@@ -1,0 +1,6 @@
+.env
+data/*
+!data/.gitkeep
+teams.json
+__pycache__/
+*.pyc

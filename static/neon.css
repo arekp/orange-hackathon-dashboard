@@ -1,0 +1,75 @@
+/* Neonowy napis "Orange Hackathon" w kolorach Orange (#FF7900, biel, czerń),
+   z drobnymi usterkami: dwie litery mrugają nieregularnie, cały szyld czasem przygasa. */
+@font-face {
+  font-family: "Monoton";
+  src: url("/vendor/fonts/monoton.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root {
+  --orange: #ff7900;
+  --orange-deep: #ff5a00;
+  --neon-white: #fff7ee;
+}
+
+.neon {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+  font-family: "Monoton", "Space Grotesk", system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  user-select: none;
+  animation: sign-buzz 9s infinite;
+}
+.neon .word { display: inline-flex; }
+.neon .l { display: inline-block; }
+
+/* "ORANGE": pomarańczowa rura neonowa */
+.neon .orange .l {
+  color: #ffd2a6;
+  text-shadow:
+    0 0 2px #fff3e6,
+    0 0 6px var(--orange),
+    0 0 14px var(--orange),
+    0 0 28px var(--orange),
+    0 0 56px var(--orange-deep),
+    0 0 90px var(--orange-deep);
+}
+/* "HACKATHON": biała rura z pomarańczową poświatą */
+.neon .hack .l {
+  color: var(--neon-white);
+  text-shadow:
+    0 0 2px #fff,
+    0 0 6px #fff,
+    0 0 14px rgba(255, 121, 0, 0.9),
+    0 0 30px var(--orange),
+    0 0 60px var(--orange-deep);
+}
+
+/* usterki: litera, która "łapie styk" */
+.neon .l.glitch-a { animation: tube-a 4.7s infinite; }
+.neon .l.glitch-b { animation: tube-b 6.3s infinite 1.3s; }
+.neon .l.dim { opacity: 0.82; }
+
+@keyframes tube-a {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24% { opacity: 0.15; text-shadow: none; }
+  55% { opacity: 0.35; text-shadow: none; }
+}
+@keyframes tube-b {
+  0%, 60%, 62.5%, 64%, 66%, 100% { opacity: 1; }
+  61%, 63% { opacity: 0.05; text-shadow: none; }
+  65% { opacity: 0.4; }
+}
+@keyframes sign-buzz {
+  0%, 92%, 93.2%, 94%, 100% { filter: none; opacity: 1; }
+  92.6% { filter: brightness(0.55); opacity: 0.85; }
+  93.6% { filter: brightness(0.75); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon, .neon .l { animation: none !important; }
+}

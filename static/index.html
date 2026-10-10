@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orange Hackathon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/neon.css">
+  <link rel="stylesheet" href="/start.css">
+</head>
+<body>
+  <main class="start">
+    <h1 class="neon logo" aria-label="Orange Hackathon">
+      <span class="word orange"><span class="l">O</span><span class="l">R</span><span class="l">A</span><span class="l">N</span><span class="l glitch-a">G</span><span class="l">E</span></span>
+      <span class="word hack"><span class="l">H</span><span class="l">A</span><span class="l">C</span><span class="l glitch-b">K</span><span class="l">A</span><span class="l">T</span><span class="l dim">H</span><span class="l">O</span><span class="l">N</span></span>
+    </h1>
+
+    <section class="countdown-box" aria-live="polite">
+      <div class="phase" id="phase">Ładowanie…</div>
+      <div class="digits" id="digits">
+        <div class="unit"><span id="d">00</span><small>dni</small></div>
+        <div class="sep">:</div>
+        <div class="unit"><span id="h">00</span><small>godz.</small></div>
+        <div class="sep">:</div>
+        <div class="unit"><span id="m">00</span><small>min</small></div>
+        <div class="sep">:</div>
+        <div class="unit"><span id="s">00</span><small>sek</small></div>
+      </div>
+      <div class="bar" id="bar" hidden><div id="bar-fill"></div></div>
+      <div class="dates" id="dates"></div>
+    </section>
+
+    <nav class="links">
+      <a class="link featured" href="/dashboard.html?slide=20">
+        <span class="ico">▶</span><b>Pokaz slajdów</b><small>wszystkie ekrany po kolei, co 20 s</small>
+      </a>
+      <a class="link" href="/dashboard.html?view=race">
+        <span class="ico">🏁</span><b>Wyścig</b><small>animowany ranking zespołów</small>
+      </a>
+      <a class="link" href="/dashboard.html?view=loc">
+        <span class="ico">📈</span><b>Linie kodu</b><small>linia w czasie dla każdego zespołu</small>
+      </a>
+      <a class="link" href="/dashboard.html?view=total">
+        <span class="ico">∑</span><b>Łącznie</b><small>cały hackaton i przyrost zespołów</small>
+      </a>
+      <a class="link" href="/dashboard.html?view=heat">
+        <span class="ico">🔥</span><b>Rytm hackatonu</b><small>aktywność zespołów godzina po godzinie</small>
+      </a>
+      <a class="link" href="/dashboard.html?view=grid">
+        <span class="ico">▦</span><b>Zespoły</b><small>karty wszystkich zespołów</small>
+      </a>
+    </nav>
+  </main>
+  <script src="/start.js"></script>
+</body>
+</html>
